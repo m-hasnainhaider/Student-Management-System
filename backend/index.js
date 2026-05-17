@@ -2,9 +2,14 @@ import express from 'express'
 import dotenv from 'dotenv'
 import { Connection,StudentModel } from './postgres/postgres.js';
 import { where } from 'sequelize';
+import cors from 'cors'
 dotenv.config();
 const app=express();
 app.use(express.json())
+app.use(cors({
+   origin:'http://localhost:3000'
+}
+))
 
 Connection();//used to connect with the database
 app.listen(process.env.PORT,()=>{
